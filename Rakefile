@@ -6,15 +6,16 @@ require_relative 'config/application'
 Rails.application.load_tasks
 
 namespace :db do
+  require_relative 'config/initializers/01_database'
   desc "Run migrations"
   task :migrate, [:version] do |t, args|
     Sequel.extension :migration
     if args[:version]
       puts "Migrating to version #{args[:version]}"
-      Sequel::Migrator.run(db, "db/migrations", target: args[:version].to_i)
+      Sequel::Migrator.run(DB, "db/migrations", target: args[:version].to_i)
     else
       puts "Migrating to latest"
-      Sequel::Migrator.run(db, "db/migrations")
+      Sequel::Migrator.run(DB, "db/migrations")
     end
   end
 

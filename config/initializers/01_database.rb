@@ -8,22 +8,16 @@ begin
   if db_conf
     DB = Sequel.connect(db_conf)
     DB.freeze
-    Rails.logger.info("successfully connected to db")
+    Rails.logger.info("successfully connected to db") if Rails.logger
   else
     msg = "db config doesn't have config for #{Rails.env} environment"
-    Rails.logger.error(msg)
+    Rails.logger.error(msg) if Rails.logger
     raise StandardError, msg
   end
 rescue Errno::ENOENT => e
-  Rails.logger.error("db config error: #{e.message}")
+  Rails.logger.error("db config error: #{e.message}") if Rails.logger
   raise
 rescue Sequel::Error => e
-  Rails.logger.error("db error: #{e.message}")
+  Rails.logger.error("db error: #{e.message}") if Rails.logger
   raise
-end
-
-# check outstanding migrations
-begin
-  Sequel.extension :migration
-  Sequel::Migrator.check_current(DB, "#{Rails.root}/db/migrations")
 end
