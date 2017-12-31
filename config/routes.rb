@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  post '/posts/create'#, as: 'posts#create'
+  post '/posts/rate'#, as: 'posts#rate'
+  get '/posts/top'#, as: 'posts#top'
+  get '/isp/different'#, as: 'ips#different'
 end
