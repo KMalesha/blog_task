@@ -7,6 +7,7 @@ begin
   db_conf = YAML.load_file("#{Rails.root}/config/database.yml")[Rails.env]
   if db_conf
     DB = Sequel.connect(db_conf)
+    DB.extension :pg_array
     DB.freeze
     Rails.logger.info("successfully connected to db") if Rails.logger
   else
