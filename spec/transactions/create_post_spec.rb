@@ -105,6 +105,7 @@ describe CreatePost do
         expect(DB[:posts].first).to include(title: params[:post][:title],
                                             body: params[:post][:body],
                                             ip: params[:post][:ip],
+                                            login: params[:post][:author],
                                             rating: nil)
       end
     end
@@ -124,9 +125,10 @@ describe CreatePost do
       it 'create new post' do
         expect { CreatePost.new.call(params) }.to change{ DB[:posts].count }.by(1)
         expect(DB[:posts].first).to include(title: params[:post][:title],
-                                        body: params[:post][:body],
-                                        ip: params[:post][:ip],
-                                        rating: nil)
+                                            body: params[:post][:body],
+                                            ip: params[:post][:ip],
+                                            login: params[:post][:author],
+                                            rating: nil)
       end
     end
   end

@@ -26,23 +26,19 @@ class CreatePost
 
   def create_author_and_post(input)
     post = input[:post]
-    author_id = nil
 
-    # find or create author
     DB.transaction do
       author = DB[:authors].select(:id, :login)
                            .where(login: post[:author])
                            .first
 
       author_id = author ? author[:id] : DB[:authors].insert(login: post[:author])
-    end
 
-    # create post
-    DB.transaction do
       DB[:posts].insert(author_id: author_id,
                         title: post[:title],
                         body: post[:body],
-                        ip: post[:ip])
+                        ip: post[:ip],
+                        login: post[:author])
     end
 
     Right(status: 200, message: "OK")
