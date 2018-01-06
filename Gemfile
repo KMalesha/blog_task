@@ -7,6 +7,7 @@ ruby '2.5.0'
 gem 'activesupport'
 gem 'dry-transaction'
 gem 'dry-validation'
+gem 'oj'
 gem 'pg'
 gem 'railties'
 gem 'sequel'
@@ -24,4 +25,5 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'rspec'
+  gem 'rspec-rails'
 end

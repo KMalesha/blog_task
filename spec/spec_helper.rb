@@ -1,11 +1,23 @@
 # frozen_string_literal: true
 
+module RequestMethods
+  def app
+    Rails.application
+  end
+
+  def resp
+    last_response
+  end
+end
+
 ENV["RACK_ENV"] = ENV["RAILS_ENV"] = "test"
 
 require 'database_cleaner'
 require File.expand_path('../../config/environment', __FILE__)
 
 RSpec.configure do |config|
+  config.include Rack::Test::Methods, type: :request
+  config.include RequestMethods, type: :request
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

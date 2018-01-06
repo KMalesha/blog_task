@@ -7,6 +7,7 @@ class Factory
                              body: opts[:body] || 'Content',
                              ip: opts[:ip] || '192.168.1.1',
                              rating: opts[:rating] || '5.0',
+                             number_of_rating: opts[:number_of_rating] || 1,
                              login: opts[:author] || 'John Doe' )
       DB[:posts].where(id: id).first
     end

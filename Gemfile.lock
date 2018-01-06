@@ -78,6 +78,7 @@ GEM
     minitest (5.10.3)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    oj (3.3.10)
     pg (0.21.0)
     rack (2.0.3)
     rack-test (0.8.2)
@@ -109,6 +110,14 @@ GEM
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
     ruby_dep (1.5.0)
     sequel (5.3.0)
@@ -133,9 +142,11 @@ DEPENDENCIES
   dry-transaction
   dry-validation
   listen (>= 3.0.5, < 3.2)
+  oj
   pg
   railties
   rspec
+  rspec-rails
   sequel
   spring
   spring-watcher-listen (~> 2.0.0)

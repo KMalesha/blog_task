@@ -17,6 +17,7 @@ class CreatePost
 
   def validate(input)
     result = Schema.call(input)
+
     if result.success?
       Right(result)
     else
@@ -41,6 +42,6 @@ class CreatePost
                         login: post[:author])
     end
 
-    Right(status: 200, message: "OK")
+    Right(status: 201, message: "OK")
   end
 end

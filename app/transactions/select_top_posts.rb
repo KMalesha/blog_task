@@ -26,6 +26,6 @@ class SelectTopPosts
                             .order(Sequel.desc(:rating))
                             .first(input[:top_n])
     end
-    Right(status: 201, message: "Top #{input[:top_n]} posts", posts: top_posts)
+    Right(status: 200, message: "Top #{input[:top_n]} posts", posts: top_posts)
   end
 end
