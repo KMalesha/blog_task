@@ -6,9 +6,9 @@ require_relative 'config/application'
 Rails.application.load_tasks
 
 namespace :db do
-  require_relative 'config/initializers/01_database'
   desc "Run migrations"
   task :migrate, [:version] do |t, args|
+    require_relative 'config/initializers/01_database'
     Sequel.extension :migration
     if args[:version]
       puts "Migrating to version #{args[:version]}"
@@ -26,5 +26,10 @@ namespace :db do
     else
       puts "name is blank"
     end
+  end
+
+  desc 'Run seeds script'
+  task :seed do
+    require_relative 'db/seeds.rb'
   end
 end
