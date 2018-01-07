@@ -2,13 +2,12 @@ source 'https://rubygems.org'
 
 ruby '2.5.0'
 
-# gem "actionpack"
-# gem "actionview"
 gem 'activesupport'
 gem 'dry-transaction'
 gem 'dry-validation'
 gem 'oj'
 gem 'pg'
+gem 'puma'
 gem 'railties'
 gem 'sequel'
 
