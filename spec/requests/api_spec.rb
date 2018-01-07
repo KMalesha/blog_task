@@ -209,9 +209,9 @@ describe 'API', type: :request do
       expect(resp.status).to eq(200)
       expect(body['message']).to eq('OK')
       expect(body['authors']).to match_array([ { 'ip' => '192.168.1.1',
-                                                 'logins' => ['Daniel Keyes', 'Neal Stephenson'] },
+                                                 'logins' => match_array(['Daniel Keyes', 'Neal Stephenson']) },
                                                { 'ip' => '10.10.0.1',
-                                                 'logins' => ['Daniel Keyes', 'Neal Stephenson', 'Eliezer Yudkowsky'] } ])
+                                                 'logins' => match_array(['Daniel Keyes', 'Neal Stephenson', 'Eliezer Yudkowsky']) } ])
     end
   end
 end

@@ -29,7 +29,7 @@ class CreatePost
     post = input[:post]
 
     DB.transaction do
-      author = DB[:authors].select(:id, :login)
+      author = DB[:authors].select(:id)
                            .where(login: post[:author])
                            .first
 

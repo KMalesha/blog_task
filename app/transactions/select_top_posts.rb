@@ -20,12 +20,9 @@ class SelectTopPosts
   end
 
   def select_top_posts(input)
-    top_posts = nil
-    DB.transaction do
-      top_posts = DB[:posts].select(:title, :body)
-                            .order(Sequel.desc(:rating))
-                            .first(input[:top_n])
-    end
+    top_posts = DB[:posts].select(:title, :body)
+                          .order(Sequel.desc(:rating))
+                          .first(input[:top_n])
     Right(status: 200, message: "Top #{input[:top_n]} posts", posts: top_posts)
   end
 end

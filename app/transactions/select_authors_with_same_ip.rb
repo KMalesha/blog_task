@@ -6,7 +6,7 @@ class SelectAuthorsWithSameIp
   step :select_different_ips
 
   def select_different_ips(input)
-    authors = DB[:posts].select(:ip, Sequel.function(:array_agg, :login).as(:logins))
+    authors = DB[:posts].select(:ip, Sequel.function(:array_agg, :login).distinct.as(:logins))
                         .group(:ip)
                         .having{ Sequel.function(:count, :author_id).distinct > 1 }
                         .all
