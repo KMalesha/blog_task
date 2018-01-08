@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../factories/posts'
 
 describe SelectTopPosts do
   let(:params) do

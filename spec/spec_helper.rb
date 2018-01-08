@@ -14,6 +14,7 @@ ENV["RACK_ENV"] = ENV["RAILS_ENV"] = "test"
 
 require 'database_cleaner'
 require File.expand_path('../../config/environment', __FILE__)
+require 'factory'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods, type: :request

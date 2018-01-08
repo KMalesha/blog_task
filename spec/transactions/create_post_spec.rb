@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../factories/authors'
 
 describe CreatePost do
   let(:params) do
@@ -85,15 +84,15 @@ describe CreatePost do
   context 'when params is valid' do
     context 'and author exists in db' do
       before do
-        Factory.create_author("Bob Kelso")
-        params[:post][:author] = "Bob Kelso"
+        Factory.create_author(login: 'Bob Kelso')
+        params[:post][:author] = 'Bob Kelso'
       end
 
       it 'return Right monad with successful message' do
         monad = CreatePost.new.call(params)
 
         expect(monad.right?).to be true
-        expect(monad.value[:message]).to eq("OK")
+        expect(monad.value[:message]).to eq('OK')
       end
 
       it 'does not create new author' do

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../factories/authors'
-require_relative '../factories/posts'
-
 
 describe 'API', type: :request do
   let(:headers) do
@@ -50,7 +47,7 @@ describe 'API', type: :request do
       end
 
       context 'and author exists' do
-        before { Factory.create_author(params[:post][:author]) }
+        before { Factory.create_author(ligin: params[:post][:author]) }
 
         it 'receives successfully response' do
           post_request

@@ -3,10 +3,7 @@
 require 'spec_helper'
 
 describe RatePost do
-  let(:post) do
-    id = DB[:posts].insert(title: 'Title', body: 'Content')
-    DB[:posts].where(id: id).first
-  end
+  let(:post) { Factory.create_post(rating: nil, number_of_rating: 0) }
   let(:params) do
     {
       rating: {

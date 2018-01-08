@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../factories/posts'
 
 describe SelectAuthorsWithSameIp do
   context 'when posts do not exist' do
