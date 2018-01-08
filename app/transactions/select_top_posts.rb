@@ -21,7 +21,7 @@ class SelectTopPosts
 
   def select_top_posts(input)
     top_posts = DB[:posts].select(:title, :body)
-                          .order(Sequel.desc(:rating))
+                          .order(Sequel.desc(:rating, nulls: :last))
                           .first(input[:top_n])
     Right(status: 200, message: "Top #{input[:top_n]} posts", posts: top_posts)
   end
