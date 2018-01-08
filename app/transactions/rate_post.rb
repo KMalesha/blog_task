@@ -25,7 +25,6 @@ class RatePost
   def rate_post(input)
     params = input[:rating]
 
-    # update rating
     DB.transaction do
       current = DB[:posts].select(:id, :rating, :number_of_rating)
                                  .where(id: params[:post_id])

@@ -43,6 +43,17 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def rate_random_posts
+    RateRandomPosts.new.call(params) do |m|
+      m.success do |output|
+        render status: output.delete(:status), body: Oj.dump(output), content_type: 'application/json'
+      end
+      m.failure do |output|
+        render status: output.delete(:status), body: Oj.dump(output), content_type: 'application/json'
+      end
+    end
+  end
+
   private def params
     request.parameters
   end

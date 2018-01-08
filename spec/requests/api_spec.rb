@@ -97,7 +97,7 @@ describe 'API', type: :request do
   end
 
   describe 'rate_post' do
-    let(:_post) { Factory.create_post }
+    let(:_post) { Factory.create_post(rating: 5.0, number_of_rating: 1) }
 
     subject(:post_request) { post '/posts/rate', Oj.dump(params), headers }
 
@@ -209,6 +209,30 @@ describe 'API', type: :request do
                                                  'logins' => match_array(['Daniel Keyes', 'Neal Stephenson']) },
                                                { 'ip' => '10.10.0.1',
                                                  'logins' => match_array(['Daniel Keyes', 'Neal Stephenson', 'Eliezer Yudkowsky']) } ])
+    end
+  end
+
+  describe 'rate_random_post' do
+    subject(:get_request) { get '/posts/rate_random', nil, headers }
+
+    before do
+      20.times { Factory.create_post }
+    end
+
+    it 'receive successfully response' do
+      get_request
+      body = Oj.load(resp.body)
+
+      expect(resp.status).to eq(200)
+      expect(body['message']).to eq('OK')
+    end
+
+    it 'only one post has rating' do
+      get_request
+      posts = DB[:posts].exclude(rating: nil).all
+
+      expect(posts.count).to eq(1)
+      expect(posts.first[:rating]).to_not be_nil
     end
   end
 end

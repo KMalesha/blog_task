@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   post '/posts/rate', to: 'application#rate_post'
   get '/posts/top', to: 'application#top_posts'
   get '/authors/with_same_ip', to: 'application#authors_with_same_ip'
+  get '/posts/rate_random', to: 'application#rate_random_posts'
 end

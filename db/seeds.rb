@@ -68,4 +68,8 @@ puts Benchmark.measure {
     end
   end
   Process.waitall
+  conn.get do |req|
+    req.url '/posts/rate_random'
+    req.headers['Content-Type'] = 'application/json'
+  end
 }

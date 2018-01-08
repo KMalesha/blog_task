@@ -15,8 +15,8 @@ class Factory
                 .insert(title: opts[:title] || 'Title',
                         body: opts[:body] || 'Content',
                         ip: opts[:ip] || '192.168.1.1',
-                        rating: opts[:rating] || '5.0',
-                        number_of_rating: opts[:number_of_rating] || 1,
+                        rating: opts[:rating],
+                        number_of_rating: opts[:number_of_rating] || 0,
                         login: opts[:author] || 'John Doe' )
                 .first
     end
