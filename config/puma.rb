@@ -1,6 +1,6 @@
-workers 4
-threads_count = 4
-threads threads_count, threads_count
+require 'etc'
+workers workers Etc.nprocessors
+threads 4, 4
 
 preload_app!
 

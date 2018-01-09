@@ -1,0 +1,22 @@
+production:
+  adapter: 'postgres'
+  database: 'blog_production'
+  host: 'host'
+  user: 'user'
+  password: 'password'
+  max_connections: 20
+
+development:
+  adapter: 'postgres'
+  database: 'blog_development'
+  host: 'localhost'
+  user: 'user'
+  password: 'password'
+  max_connections: 20
+
+test:
+  adapter: 'postgres'
+  database: 'blog_test'
+  host: 'localhost'
+  user: 'user'
+  password: password

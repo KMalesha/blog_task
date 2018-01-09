@@ -22,7 +22,7 @@ NPROCESS = case Etc.nprocessors
           end
 NPARALLELREQUEST = 20
 
-NROWS = 10_000
+NROWS = 200_000
 
 conn = Faraday.new(url: SERVER_URL) do |conn|
   conn.adapter :typhoeus
